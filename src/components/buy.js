@@ -7,7 +7,7 @@ export default function Buy() {
       <h3 className="text-center mt-3 my-2">Buy movies</h3>
       <div className="container">
         <div className="row">
-          <div className="col-md-3 my-2">
+          <div className="col-md-4 my-2">
             <div className="card text-dark">
               <img className="card-img-top" src={image} alt="Card image cap" />
               <div className="card-body">
@@ -20,7 +20,7 @@ export default function Buy() {
               </div>
             </div>
           </div>
-          <div className="col-md-3 my-2">
+          <div className="col-md-4 my-2">
             <div className="card text-dark">
               <img className="card-img-top" src={image} alt="Card image cap" />
               <div className="card-body">
@@ -33,7 +33,7 @@ export default function Buy() {
               </div>
             </div>
           </div>
-          <div className="col-md-3 my-2">
+          <div className="col-md-4 my-2">
             <div className="card text-dark">
               <img className="card-img-top" src={image} alt="Card image cap" />
               <div className="card-body">
