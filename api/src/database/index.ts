@@ -10,7 +10,7 @@ if (process.env.NODE_ENV === 'dev') {
     database: process.env.POSTGRES_DB,
     user: process.env.POSTGRES_USER,
     password: process.env.POSTGRES_PASSWORD,
-    port: parseInt(process.env.POSTGRES_PORT),
+    port: parseInt(process.env.POSTGRES_PORT as string),
   })
 }
 if (process.env.NODE_ENV === 'test') {
@@ -19,7 +19,7 @@ if (process.env.NODE_ENV === 'test') {
     database: process.env.POSTGRES_DB_TEST,
     user: process.env.POSTGRES_USER,
     password: process.env.POSTGRES_PASSWORD,
-    port: parseInt(process.env.POSTGRES_PORT),
+    port: parseInt(process.env.POSTGRES_PORT as string),
   })
 }
 
