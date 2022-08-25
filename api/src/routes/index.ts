@@ -1,9 +1,7 @@
 import express from 'express';
-
+import movieRoute from './api/movie_routes';
 const routes = express.Router();
 
-routes.get("/movies",(req,res)=>{
-    res.send("Here's the list of available movies")
-})
+routes.use("/movies", movieRoute)
 
 export default routes;

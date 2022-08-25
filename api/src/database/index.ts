@@ -2,7 +2,7 @@ import { Pool } from 'pg'
 import dotenv from 'dotenv'
 dotenv.config()
 
-let pool
+let pool:any;
 
 if (process.env.NODE_ENV === 'dev') {
   pool = new Pool({
