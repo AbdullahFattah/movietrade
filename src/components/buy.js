@@ -28,7 +28,7 @@ export default function Buy() {
 function MovieRow(props) {
   return props.movie.map((movie) => {
     return (
-      <div className="col-md-4 my-2">
+      <div className="col-md-4 my-2" key={movie.id}>
         <div className="card text-dark">
           <img className="card-img-top" src={image} alt="Card image cap" />
           <div className="card-body">

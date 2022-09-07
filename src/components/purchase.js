@@ -5,9 +5,7 @@ export default function Purchase() {
     <>
       <div className="container text-center my-5">
         <h3 className="text-center mt-3">Confirm purchase</h3>
-        <p className="my-5">
-          Please confirm the purchase of (Movie name) for (price)
-        </p>
+        <p className="my-5">Please confirm the purchase of TITLE for PRICE</p>
         <Link to="/buy-movies" className="btn btn-danger">
           Cancel
         </Link>
