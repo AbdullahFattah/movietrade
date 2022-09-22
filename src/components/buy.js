@@ -5,6 +5,7 @@ import image from "./card-image.jpg";
 export default function Buy() {
   const [movie, setMovie] = useState([]);
 
+  const [selectedMovie, setSelectedMovie] = useState(null);
   useEffect(() => {
     loadMovies();
   }, []);
@@ -13,20 +14,27 @@ export default function Buy() {
     const result = await axios.get("http://localhost:4000/movies");
     setMovie(result.data);
   };
+  const handleBuy = () => {};
+
   return (
     <>
       <h3 className="text-center mt-3 my-2">Buy movies</h3>
       <div className="container">
         <div className="row">
-          <MovieRow movie={movie} />
+          <MovieRow
+            movie={movie}
+            handleBuy={handleBuy}
+            selectedMovie={selectedMovie}
+            setSelectedMovie={setSelectedMovie}
+          />
         </div>
       </div>
     </>
   );
 }
 
-function MovieRow(props) {
-  return props.movie.map((movie) => {
+function MovieRow({ movie, handleBuy, selectedMovie, setSelectedMovie }) {
+  return movie.map((movie) => {
     return (
       <div className="col-md-4 my-2" key={movie.id}>
         <div className="card text-dark">
@@ -35,7 +43,13 @@ function MovieRow(props) {
             <h5 className="card-title">{movie.title}</h5>
             <p className="card-text">{movie.description}</p>
             <p className="card-text">${movie.price}</p>
-            <Link to="/purchase" className="btn btn-primary">
+            <Link
+              to="/purchase"
+              onClick={() => {
+                setSelectedMovie(movie.title);
+              }}
+              className="btn btn-primary"
+            >
               BUY NOW
             </Link>
           </div>

@@ -1,0 +1,8 @@
+- Application allows you to trade movies with other users, you have the option of buying movies as well.
+
+Application structure:
+
+  	-Homepage
+  	-User's profile with owned movies
+  	-Other users profiles and owned movies
+  	
