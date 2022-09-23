@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-export default function Navbar() {
+export default function Navbar({ balance }) {
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-light mt-3">
@@ -25,7 +25,7 @@ export default function Navbar() {
         </div>
         <div className="navbar-nav">
           <a className="nav-link nav-item text-success text-center">
-            Balance $0
+            Balance {balance}EGP
           </a>
         </div>
       </nav>

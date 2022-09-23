@@ -7,18 +7,23 @@ import Me from "./components/me";
 import Buy from "./components/buy";
 import Purchase from "./components/purchase";
 import PurchaseComplete from "./components/purchase-complete";
+import { useState } from "react";
 function App() {
+  const [balance, setBalance] = useState(100);
   return (
     <>
       <div className="container">
         <Router>
-          <Navbar />
+          <Navbar balance={balance} />
           <Routes>
             <Route path="/" element={<Home />}></Route>
             <Route path="/me" element={<Me />}></Route>
             <Route path="/buy-movies" element={<Buy />}></Route>
             <Route path="/about" element={<About />}></Route>
-            <Route path="/purchase/:id" element={<Purchase />}></Route>
+            <Route
+              path="/purchase/:id"
+              element={<Purchase balance={balance} setBalance={setBalance} />}
+            ></Route>
             <Route
               path="/purchase-complete"
               element={<PurchaseComplete />}
