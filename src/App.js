@@ -18,7 +18,7 @@ function App() {
             <Route path="/me" element={<Me />}></Route>
             <Route path="/buy-movies" element={<Buy />}></Route>
             <Route path="/about" element={<About />}></Route>
-            <Route path="/purchase" element={<Purchase />}></Route>
+            <Route path="/purchase/:id" element={<Purchase />}></Route>
             <Route
               path="/purchase-complete"
               element={<PurchaseComplete />}

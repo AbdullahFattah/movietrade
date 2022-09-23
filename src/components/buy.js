@@ -43,13 +43,7 @@ function MovieRow({ movie, handleBuy, selectedMovie, setSelectedMovie }) {
             <h5 className="card-title">{movie.title}</h5>
             <p className="card-text">{movie.description}</p>
             <p className="card-text">${movie.price}</p>
-            <Link
-              to="/purchase"
-              onClick={() => {
-                setSelectedMovie(movie.title);
-              }}
-              className="btn btn-primary"
-            >
+            <Link to={`/purchase/` + movie.id} className="btn btn-primary">
               BUY NOW
             </Link>
           </div>
