@@ -24,9 +24,12 @@ export default function Navbar({ balance }) {
           </NavLink>
         </div>
         <div className="navbar-nav">
-          <a className="nav-link nav-item text-success text-center">
+          <NavLink
+            to="/recharge"
+            className="nav-link nav-item text-success text-center"
+          >
             Balance {balance}EGP
-          </a>
+          </NavLink>
         </div>
       </nav>
     </>

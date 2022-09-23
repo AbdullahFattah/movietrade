@@ -21,42 +21,6 @@ export default function Me() {
                 </div>
               </div>
             </div>
-            <div className="col-md-3 my-2">
-              <div className="card text-dark">
-                <img
-                  className="card-img-top"
-                  src={image}
-                  alt="Card image cap"
-                />
-                <div className="card-body">
-                  <p className="card-text">Movie #2</p>
-                </div>
-              </div>
-            </div>
-            <div className="col-md-3 my-2">
-              <div className="card text-dark">
-                <img
-                  className="card-img-top"
-                  src={image}
-                  alt="Card image cap"
-                />
-                <div className="card-body">
-                  <p className="card-text">Movie #3</p>
-                </div>
-              </div>
-            </div>
-            <div className="col-md-3 my-2">
-              <div className="card text-dark">
-                <img
-                  className="card-img-top"
-                  src={image}
-                  alt="Card image cap"
-                />
-                <div className="card-body">
-                  <p className="card-text">Movie #4</p>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
