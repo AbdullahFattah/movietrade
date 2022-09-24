@@ -1,5 +1,5 @@
 import React from "react";
-import image from "./card-image.jpg";
+import image from "../assets/card-image.jpg";
 export default function Me() {
   return (
     <>

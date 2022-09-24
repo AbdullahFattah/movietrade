@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import image from "./card-image.jpg";
+import image from "../assets/card-image.jpg";
 export default function Buy() {
   const [movie, setMovie] = useState([]);
 
