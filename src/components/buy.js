@@ -18,7 +18,7 @@ export default function Buy() {
 
   return (
     <>
-      <h3 className="text-center mt-3 my-2">Buy movies</h3>
+      <h3 className="text-center mt-3 my-2">Buy movies & TV Shows</h3>
       <div className="container">
         <div className="row">
           <MovieRow
@@ -42,7 +42,9 @@ function MovieRow({ movie, handleBuy, selectedMovie, setSelectedMovie }) {
           <div className="card-body">
             <h5 className="card-title">{movie.title}</h5>
             <p className="card-text">{movie.description}</p>
-            <p className="card-text">${movie.price}</p>
+            <p className="card-text">
+              {movie.price}EGP (${Math.floor(movie.price / 19)})
+            </p>
             <Link to={`/purchase/` + movie.id} className="btn btn-primary">
               BUY NOW
             </Link>

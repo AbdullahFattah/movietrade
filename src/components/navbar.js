@@ -15,7 +15,7 @@ export default function Navbar({ balance }) {
         </div>
         <div className="navbar-nav ">
           <NavLink to="/buy-movies" className="nav-item nav-link ">
-            Buy movies
+            Market
           </NavLink>
         </div>
         <div className="navbar-nav ">

@@ -7,9 +7,10 @@ import Me from "./components/me";
 import Buy from "./components/buy";
 import Purchase from "./components/purchase";
 import PurchaseComplete from "./components/purchase-complete";
+import Recharge from "./components/recharge";
 import { useState } from "react";
 function App() {
-  const [balance, setBalance] = useState(100);
+  const [balance, setBalance] = useState(500);
   return (
     <>
       <div className="container">
@@ -20,6 +21,10 @@ function App() {
             <Route path="/me" element={<Me />}></Route>
             <Route path="/buy-movies" element={<Buy />}></Route>
             <Route path="/about" element={<About />}></Route>
+            <Route
+              path="/recharge"
+              element={<Recharge balance={balance} setBalance={setBalance} />}
+            ></Route>
             <Route
               path="/purchase/:id"
               element={<Purchase balance={balance} setBalance={setBalance} />}

@@ -1,7 +1,7 @@
 body{
   background-color: rgb(45, 56, 82);
   color: white;
-   font-family: "Lucida Console", "Courier New", monospace;
+   /* font-family: "Lucida Console", "Courier New", monospace; */
 }
 nav.div{
   margin-left: 20%;
