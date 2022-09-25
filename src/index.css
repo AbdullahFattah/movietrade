@@ -6,3 +6,10 @@ body{
 nav.div{
   margin-left: 20%;
 }
+
+.my-profile-photo{
+  height:100px;
+  width: 100px;
+  
+  border: solid white 1px;
+}
