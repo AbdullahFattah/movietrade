@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
-function Purchase({ balance, setBalance }) {
+function Purchase({ balance, setBalance, ownedMovies, setOwnedMovies }) {
   const [fetchedMovies, setFetchedMovies] = useState([]);
   const [balanceError, setBalanceError] = useState("");
   // const [ownedMovies, setOwnedMovies] = useState([]);
@@ -23,12 +23,12 @@ function Purchase({ balance, setBalance }) {
     fetchedMovies.length > 0
       ? fetchedMovies.find((m) => m.id === movieId).price
       : null;
+  const selectedMovie = fetchedMovies.find((m) => m.id === movieId);
 
   // const selectedMovie =
   //   fetchedMovies.length > 0
   //     ? fetchedMovies.find((m) => m.id === movieId)
   //     : null;
-
   return (
     <>
       <div className="container text-center my-5">
@@ -47,6 +47,7 @@ function Purchase({ balance, setBalance }) {
           onClick={(e) => {
             if (balance >= moviePrice) {
               setBalance(balance - moviePrice);
+              setOwnedMovies([...ownedMovies, selectedMovie]);
             } else {
               e.preventDefault();
               setBalanceError(

@@ -11,6 +11,7 @@ import Recharge from "./components/recharge";
 
 function App() {
   const [balance, setBalance] = useState(0);
+  const [ownedMovies, setOwnedMovies] = useState([]);
 
   useEffect(() => {
     const balance = JSON.parse(window.sessionStorage.getItem("balance"));
@@ -20,6 +21,16 @@ function App() {
   useEffect(() => {
     window.sessionStorage.setItem("balance", balance);
   }, [balance]);
+
+  useEffect(() => {
+    const ownedMovies = window.sessionStorage.getItem("ownedMovies");
+    const parsedMoviesObj = JSON.parse(ownedMovies);
+    setOwnedMovies(parsedMoviesObj);
+  }, []);
+  useEffect(() => {
+    const ownedMoviesObj = JSON.stringify(ownedMovies);
+    window.sessionStorage.setItem("ownedMovies", ownedMoviesObj);
+  }, [ownedMovies]);
   return (
     <>
       <div className="container">
@@ -27,7 +38,12 @@ function App() {
           <Navbar balance={balance} />
           <Routes>
             <Route path="/" element={<Home />}></Route>
-            <Route path="/me" element={<Me />}></Route>
+            <Route
+              path="/me"
+              element={
+                <Me ownedMovies={ownedMovies} setOwnedMovies={setOwnedMovies} />
+              }
+            ></Route>
             <Route path="/buy-movies" element={<Buy />}></Route>
             <Route path="/about" element={<About />}></Route>
             <Route
@@ -36,7 +52,14 @@ function App() {
             ></Route>
             <Route
               path="/purchase/:id"
-              element={<Purchase balance={balance} setBalance={setBalance} />}
+              element={
+                <Purchase
+                  balance={balance}
+                  setBalance={setBalance}
+                  ownedMovies={ownedMovies}
+                  setOwnedMovies={setOwnedMovies}
+                />
+              }
             ></Route>
             <Route
               path="/purchase-complete"
