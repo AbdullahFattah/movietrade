@@ -1,5 +1,6 @@
 import React from "react";
 import image from "../assets/card-image.jpg";
+import profileImage from "../assets/profile3.jpg";
 export default function Me() {
   return (
     <>
@@ -7,9 +8,13 @@ export default function Me() {
         <p className="text-warning">Hello, User!</p>
 
         <div className="my-profile" align="center">
-          <div className="my-profile-photo">Your picture here</div>
+          <img
+            src={profileImage}
+            style={{ height: 100, border: "1px solid white" }}
+          ></img>
+          {/* <div className="my-profile-photo">Your picture here</div> */}
           <div className="my-info">
-            <p>FirstName LastName</p>
+            <p>Your username</p>
           </div>
         </div>
         <hr></hr>
