@@ -1,6 +1,7 @@
 import React from "react";
 import image from "../assets/card-image.jpg";
-import profileImage from "../assets/profile3.jpg";
+import profileImage from "../assets/profile.jpg";
+
 export default function Me({ ownedMovies }) {
   return (
     <div className="container text-center mt-3">
@@ -19,7 +20,6 @@ export default function Me({ ownedMovies }) {
       <hr></hr>
       <div className="my-movies">
         <label>Your movie library</label>
-        {console.log(ownedMovies)}
         <div className="container">
           <div className="row">
             {ownedMovies.map((movie) => {
@@ -33,6 +33,9 @@ export default function Me({ ownedMovies }) {
                     />
                     <div className="card-body">
                       <p className="card-text">{movie.title}</p>
+                      <button style={{ border: "1px solid" }}>
+                        Trade
+                      </button>{" "}
                     </div>
                   </div>
                 </div>

@@ -14,19 +14,19 @@ function App() {
   const [ownedMovies, setOwnedMovies] = useState([]);
 
   useEffect(() => {
+    // Balance session storage
     const balance = JSON.parse(window.sessionStorage.getItem("balance"));
     setBalance(balance ? balance : 0);
+    // Movie library session
+    const ownedMovies = window.sessionStorage.getItem("ownedMovies");
+    const parsedMoviesObj = JSON.parse(ownedMovies);
+    setOwnedMovies(parsedMoviesObj);
   }, []);
 
   useEffect(() => {
     window.sessionStorage.setItem("balance", balance);
   }, [balance]);
 
-  useEffect(() => {
-    const ownedMovies = window.sessionStorage.getItem("ownedMovies");
-    const parsedMoviesObj = JSON.parse(ownedMovies);
-    setOwnedMovies(parsedMoviesObj);
-  }, []);
   useEffect(() => {
     const ownedMoviesObj = JSON.stringify(ownedMovies);
     window.sessionStorage.setItem("ownedMovies", ownedMoviesObj);
