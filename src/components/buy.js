@@ -41,6 +41,8 @@ function MovieRow({ movie, handleBuy, selectedMovie, setSelectedMovie }) {
           <img className="card-img-top" src={image} alt="Card image cap" />
           <div className="card-body">
             <h5 className="card-title">{movie.title}</h5>
+            {/* To be replace with year of making */}
+            <p>{movie.year}</p>
             <p className="card-text">{movie.description}</p>
             <p className="card-text">
               {movie.price}EGP (${Math.floor(movie.price / 19)})

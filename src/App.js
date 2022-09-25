@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./components/home";
 import About from "./components/about";
@@ -8,9 +8,18 @@ import Buy from "./components/buy";
 import Purchase from "./components/purchase";
 import PurchaseComplete from "./components/purchase-complete";
 import Recharge from "./components/recharge";
-import { useState } from "react";
+
 function App() {
-  const [balance, setBalance] = useState(500);
+  const [balance, setBalance] = useState(0);
+
+  useEffect(() => {
+    const balance = JSON.parse(window.sessionStorage.getItem("balance"));
+    setBalance(balance ? balance : 0);
+  }, []);
+
+  useEffect(() => {
+    window.sessionStorage.setItem("balance", balance);
+  }, [balance]);
   return (
     <>
       <div className="container">

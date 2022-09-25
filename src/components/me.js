@@ -6,6 +6,9 @@ export default function Me() {
       <div className="container text-center mt-3">
         <p className="text-warning">Hello, User!</p>
 
+        <div className="my-profile">
+          <p>You</p>
+        </div>
         <div className="my-movies">
           <label>Your movie library</label>
           <div className="row">
