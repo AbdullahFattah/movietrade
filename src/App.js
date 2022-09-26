@@ -8,6 +8,7 @@ import Buy from "./components/buy";
 import Purchase from "./components/purchase";
 import PurchaseComplete from "./components/purchase-complete";
 import Recharge from "./components/recharge";
+import MoviePage from "./components/MoviePage";
 
 function App() {
   const [balance, setBalance] = useState(0);
@@ -65,6 +66,7 @@ function App() {
               path="/purchase-complete"
               element={<PurchaseComplete />}
             ></Route>
+            <Route path="/movie/:id" element={<MoviePage />}></Route>
           </Routes>
         </Router>
       </div>

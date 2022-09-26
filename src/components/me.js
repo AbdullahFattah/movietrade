@@ -22,6 +22,12 @@ export default function Me({ ownedMovies }) {
         <label>Your movie library</label>
         <div className="container">
           <div className="row">
+            {ownedMovies.length == 0 ? (
+              <p>
+                Your library is currently empty, you can buy movies from the
+                market
+              </p>
+            ) : null}
             {ownedMovies.map((movie) => {
               return (
                 <div className="col-md-3 my-2" key={movie.id}>

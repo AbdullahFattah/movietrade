@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import image from "../assets/card-image.jpg";
 export default function Buy() {
   const [movie, setMovie] = useState([]);
@@ -27,11 +27,20 @@ export default function Buy() {
 }
 
 function MovieRow({ movie }) {
+  let navigate = useNavigate();
   return movie.map((movie) => {
     return (
       <div className="col-md-4 my-2" key={movie.id}>
         <div className="card text-dark">
-          <img className="card-img-top" src={image} alt="Card image cap" />
+          <img
+            className="card-img-top"
+            onClick={() => {
+              navigate(`/movie/${movie.id}`);
+            }}
+            style={{ cursor: "pointer" }}
+            src={image}
+            alt="Card image cap"
+          />
           <div className="card-body">
             <h5 className="card-title">{movie.title}</h5>
             {/* To be replace with year of making */}

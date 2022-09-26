@@ -4,7 +4,6 @@ import axios from "axios";
 function Purchase({ balance, setBalance, ownedMovies, setOwnedMovies }) {
   const [fetchedMovies, setFetchedMovies] = useState([]);
   const [balanceError, setBalanceError] = useState("");
-  // const [ownedMovies, setOwnedMovies] = useState([]);
   useEffect(() => {
     loadMovies();
   }, []);
@@ -25,10 +24,6 @@ function Purchase({ balance, setBalance, ownedMovies, setOwnedMovies }) {
       : null;
   const selectedMovie = fetchedMovies.find((m) => m.id === movieId);
 
-  // const selectedMovie =
-  //   fetchedMovies.length > 0
-  //     ? fetchedMovies.find((m) => m.id === movieId)
-  //     : null;
   return (
     <>
       <div className="container text-center my-5">
