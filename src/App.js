@@ -11,6 +11,7 @@ import Recharge from "./components/recharge";
 import MoviePage from "./components/MoviePage";
 
 function App() {
+  const [movie, setMovie] = useState([]);
   const [balance, setBalance] = useState(0);
   const [ownedMovies, setOwnedMovies] = useState([]);
 
@@ -45,7 +46,10 @@ function App() {
                 <Me ownedMovies={ownedMovies} setOwnedMovies={setOwnedMovies} />
               }
             ></Route>
-            <Route path="/buy-movies" element={<Buy />}></Route>
+            <Route
+              path="/buy-movies"
+              element={<Buy movie={movie} setMovie={setMovie} />}
+            ></Route>
             <Route path="/about" element={<About />}></Route>
             <Route
               path="/recharge"
@@ -66,7 +70,10 @@ function App() {
               path="/purchase-complete"
               element={<PurchaseComplete />}
             ></Route>
-            <Route path="/movie/:id" element={<MoviePage />}></Route>
+            <Route
+              path="/movie/:id"
+              element={<MoviePage movie={movie} />}
+            ></Route>
           </Routes>
         </Router>
       </div>
