@@ -48,7 +48,13 @@ function App() {
             ></Route>
             <Route
               path="/buy-movies"
-              element={<Buy movie={movie} setMovie={setMovie} />}
+              element={
+                <Buy
+                  movie={movie}
+                  setMovie={setMovie}
+                  ownedMovies={ownedMovies}
+                />
+              }
             ></Route>
             <Route path="/about" element={<About />}></Route>
             <Route

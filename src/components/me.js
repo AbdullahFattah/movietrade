@@ -5,8 +5,6 @@ import profileImage from "../assets/profile.jpg";
 export default function Me({ ownedMovies }) {
   return (
     <div className="container text-center mt-3">
-      <p className="text-warning">Hello, User!</p>
-
       <div className="my-profile" align="center">
         <img
           src={profileImage}
@@ -14,19 +12,20 @@ export default function Me({ ownedMovies }) {
         ></img>
 
         <div className="my-info">
-          <p>Your username</p>
+          <p className="text-warning">Your username</p>
+          <p className="">A story that describes who you are </p>
         </div>
       </div>
       <hr></hr>
       <div className="my-movies">
-        <label>Your movie library</label>
+        <label className="text-warning">Your movie library</label>
         <div className="container">
           <div className="row">
             {ownedMovies.length == 0 ? (
-              <p>
+              <i className="text-secondary" style={{ fontSize: "13px" }}>
                 Your library is currently empty, you can buy movies from the
                 market
-              </p>
+              </i>
             ) : null}
             {ownedMovies.map((movie) => {
               return (
