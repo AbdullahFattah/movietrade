@@ -1,12 +1,16 @@
 import { Link } from "react-router-dom";
 const AddMovie = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(e);
+  };
   return (
-    <form className="container col-md-4 my-5">
+    <form className="container col-md-4 my-5" onSubmit={(e) => handleSubmit(e)}>
       <div className="form-group">
         <label className="m-2">Title</label>
         <input
           type="text"
-          pattern="[a-zA-Z0-9]{1,40}"
+          pattern="[a-z A-Z0-9]{1,40}"
           className="form-control"
           required
           placeholder="What is the movie called?"
