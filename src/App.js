@@ -9,6 +9,7 @@ import Purchase from "./components/purchase";
 import PurchaseComplete from "./components/purchase-complete";
 import Recharge from "./components/recharge";
 import MoviePage from "./components/MoviePage";
+import AddMovie from "./components/AddMovie";
 
 function App() {
   const [movie, setMovie] = useState([]);
@@ -80,6 +81,7 @@ function App() {
               path="/movie/:id"
               element={<MoviePage movie={movie} />}
             ></Route>
+            <Route path="/add-movies" element={<AddMovie />}></Route>
           </Routes>
         </Router>
       </div>

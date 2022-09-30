@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import image from "../assets/card-image.jpg";
+import AddMovie from "./AddMovie";
 export default function Buy({ movie, setMovie, ownedMovies }) {
   useEffect(() => {
     loadMovies();
@@ -20,6 +21,15 @@ export default function Buy({ movie, setMovie, ownedMovies }) {
           <MovieRow movie={movie} ownedMovies={ownedMovies} />
         </div>
       </div>
+      <div className="col-md-12 text-center">
+        <Link
+          to="/add-movies"
+          className="btn btn-success"
+          style={{ width: 290, margin: 10 }}
+        >
+          ADD MOVIES
+        </Link>
+      </div>
     </>
   );
 }
@@ -34,23 +44,23 @@ function MovieRow({ movie, ownedMovies }) {
     ownedMoviesArrayIds.push(m.id);
   });
 
-  const idExists = moviesArrayIds.some((id) => {
-    return ownedMoviesArrayIds.includes(id);
-  });
-  console.log(idExists);
-  // const buyButton = () => {
-  //   if (idExists) {
-  //     return (
-  //       <Link to={`/purchase/` + movie.id} className="btn btn-primary">
-  //         BUY NOW
-  //       </Link>
-  //     );
-  //   } else {
-  //     return "grey buutton";
-  //   }
-  // };
-
   return movie.map((movie) => {
+    const idExists = moviesArrayIds.some((id) => {
+      return ownedMoviesArrayIds.includes(id);
+    });
+    console.log(idExists);
+
+    const buyButton = () => {
+      if (idExists) {
+        return (
+          <Link to={`/purchase/` + movie.id} className="btn btn-primary">
+            BUY NOW
+          </Link>
+        );
+      } else {
+        return "grey buutton";
+      }
+    };
     return (
       <div className="col-md-4 my-2" key={movie.id}>
         <div className="card text-dark">
@@ -71,7 +81,10 @@ function MovieRow({ movie, ownedMovies }) {
             <p className="card-text">
               {movie.price}EGP (${Math.floor(movie.price / 19)})
             </p>
-            {/* {buyButton()} */}
+            {buyButton()}
+            {/* <Link to={`/purchase/` + movie.id} className="btn btn-primary">
+              BUY NOW
+            </Link> */}
           </div>
         </div>
       </div>

@@ -5,6 +5,7 @@ export default function PurchaseComplete() {
     <>
       <div className="container text-center my-5">
         <h2 className="text-success">Purchase complete!</h2>
+        <h3 className="text-success">Enjoy watching!</h3>
 
         <Link className="btn btn-warning m-3 mt-5" to="/buy-movies">
           Buy more movies

@@ -17,9 +17,13 @@ const MoviePage = ({ movie }) => {
           marginTop: "50px",
         }}
       >
-        <h1>{selectedMovie ? selectedMovie.title : null}</h1>
-        <p>{selectedMovie ? selectedMovie.year : null}</p>
-        <p>{selectedMovie ? selectedMovie.description : null}</p>
+        <h1>{selectedMovie ? selectedMovie.title : "Movie title"}</h1>
+        <p>{selectedMovie ? selectedMovie.year : "Year of Making"}</p>
+        <p>
+          {selectedMovie
+            ? selectedMovie.description
+            : "Description of the movie"}
+        </p>
         <Link
           to={`/purchase/${movieId}`}
           style={{ width: "100%" }}
