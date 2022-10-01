@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import image from "../assets/card-image.jpg";
-import AddMovie from "./AddMovie";
 export default function Buy({ movie, setMovie, ownedMovies }) {
   useEffect(() => {
     loadMovies();
@@ -48,7 +47,6 @@ function MovieRow({ movie, ownedMovies }) {
     const idExists = moviesArrayIds.some((id) => {
       return ownedMoviesArrayIds.includes(id);
     });
-    console.log(idExists);
 
     // const buyButton = () => {
     //   if (idExists) {

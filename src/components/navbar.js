@@ -1,7 +1,11 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
+
+const noNavBarRoutes = ["/login"];
 
 export default function Navbar({ balance }) {
+  const { pathname } = useLocation();
+  if (noNavBarRoutes.some((url) => pathname.includes(url))) return null;
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-light mt-3">
