@@ -50,17 +50,17 @@ function MovieRow({ movie, ownedMovies }) {
     });
     console.log(idExists);
 
-    const buyButton = () => {
-      if (idExists) {
-        return (
-          <Link to={`/purchase/` + movie.id} className="btn btn-primary">
-            BUY NOW
-          </Link>
-        );
-      } else {
-        return "grey buutton";
-      }
-    };
+    // const buyButton = () => {
+    //   if (idExists) {
+    //     return (
+    //       <Link to={`/purchase/` + movie.id} className="btn btn-primary">
+    //         BUY NOW
+    //       </Link>
+    //     );
+    //   } else {
+    //     return "grey buutton";
+    //   }
+    // };
     return (
       <div className="col-md-4 my-2" key={movie.id}>
         <div className="card text-dark">
@@ -77,14 +77,14 @@ function MovieRow({ movie, ownedMovies }) {
             <h5 className="card-title">{movie.title}</h5>
 
             <p>{movie.year}</p>
-            <p className="card-text">{movie.description}</p>
+            <p className="card-text">{movie.description.substr(0, 200)}</p>
             <p className="card-text">
               {movie.price}EGP (${Math.floor(movie.price / 19)})
             </p>
-            {buyButton()}
-            {/* <Link to={`/purchase/` + movie.id} className="btn btn-primary">
+            {/* {buyButton()} */}
+            <Link to={`/purchase/` + movie.id} className="btn btn-primary">
               BUY NOW
-            </Link> */}
+            </Link>
           </div>
         </div>
       </div>
