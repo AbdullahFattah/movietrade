@@ -7,6 +7,7 @@ const Login = () => {
     username: "",
     password: "",
   });
+  const [error, setError] = useState("");
   const navigate = useNavigate();
   const handleChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
@@ -16,7 +17,9 @@ const Login = () => {
 
     usernames.includes(user.username) && passwords.includes(user.password)
       ? navigate("/")
-      : console.log("Fail");
+      : setError(
+          "Unable to log in! Make sure you have the correct username and password"
+        );
   };
 
   return (
@@ -55,6 +58,7 @@ const Login = () => {
         >
           Login
         </button>
+        <p style={{ color: "orange" }}>{error}</p>
       </form>
     </>
   );
