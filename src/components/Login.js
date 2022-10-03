@@ -1,12 +1,13 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-const Login = () => {
-  const usernames = ["iCy"];
+const Login = ({ user, setUser }) => {
+  const usernames = ["iCy", "Abdullah"];
   const passwords = ["movietrade"];
-  const [user, setUser] = useState({
-    username: "",
-    password: "",
-  });
+
+  //   useEffect(() => {
+  //     window.sessionStorage.setItem("user", user.username);
+  //   }, [user]);
+
   const [error, setError] = useState("");
   const navigate = useNavigate();
   const handleChange = (e) => {
@@ -14,9 +15,12 @@ const Login = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    const loginSuccess = () => {
+      window.localStorage.setItem("user", user.username);
+      navigate("/");
+    };
     usernames.includes(user.username) && passwords.includes(user.password)
-      ? navigate("/")
+      ? loginSuccess()
       : setError(
           "Unable to log in! Make sure you have the correct username and password"
         );
@@ -24,7 +28,9 @@ const Login = () => {
 
   return (
     <>
-      <h1 align="center">Movietrade</h1>
+      <h1 align="center" style={{ margin: "10% 0" }}>
+        Movietrade
+      </h1>
       <form
         className="container col-md-4 my-5"
         onSubmit={(e) => handleSubmit(e)}

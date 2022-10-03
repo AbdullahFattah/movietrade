@@ -3,6 +3,7 @@ import image from "../assets/card-image.jpg";
 import profileImage from "../assets/profile.jpg";
 
 export default function Me({ ownedMovies }) {
+  const loggedUser = window.localStorage.getItem("user");
   return (
     <div className="container text-center mt-3">
       <div className="my-profile" align="center">
@@ -12,7 +13,7 @@ export default function Me({ ownedMovies }) {
         ></img>
 
         <div className="my-info">
-          <p className="text-warning">Your username</p>
+          <p className="text-warning">{loggedUser}</p>
           <p className="">A story that describes who you are </p>
         </div>
       </div>
