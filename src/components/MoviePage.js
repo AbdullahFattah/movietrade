@@ -1,7 +1,16 @@
+import { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import image from "../assets/card-image.jpg";
 
-const MoviePage = ({ movie }) => {
+const MoviePage = ({ movie, setMovie }) => {
+  // useEffect(()=>{
+  //   loadMovies();
+  // },[])
+  // const loadMovies = async () => {
+  //   const result = await axios.get("http://localhost:4000/movies");
+  //   setMovie(result.data);
+  // };
+
   const movieId = parseInt(useParams().id);
 
   const selectedMovie = movie[movieId - 1];

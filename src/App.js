@@ -11,11 +11,14 @@ import Recharge from "./components/recharge";
 import MoviePage from "./components/MoviePage";
 import AddMovie from "./components/AddMovie";
 import Login from "./components/Login";
+import Modify from "./components/Modify";
+import ModifyPage from "./components/ModifyPage";
 
 function App() {
   const [movie, setMovie] = useState([]);
   const [balance, setBalance] = useState(0);
   const [ownedMovies, setOwnedMovies] = useState([]);
+
   // Login
   const [user, setUser] = useState({
     username: "",
@@ -92,6 +95,14 @@ function App() {
               element={<MoviePage movie={movie} />}
             ></Route>
             <Route path="/add-movies" element={<AddMovie />}></Route>
+            <Route
+              path="/modify"
+              element={<Modify movie={movie} setMovie={setMovie} />}
+            ></Route>
+            <Route
+              path="/modify/:id"
+              element={<ModifyPage movie={movie} setMovie={setMovie} />}
+            ></Route>
           </Routes>
         </Router>
       </div>
