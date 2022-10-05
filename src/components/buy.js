@@ -44,9 +44,9 @@ function MovieRow({ movie, ownedMovies }) {
   });
 
   return movie.map((movie) => {
-    const idExists = moviesArrayIds.some((id) => {
-      return ownedMoviesArrayIds.includes(id);
-    });
+    // const idExists = moviesArrayIds.some((id) => {
+    //   return ownedMoviesArrayIds.includes(id);
+    // });
 
     // const buyButton = () => {
     //   if (idExists) {

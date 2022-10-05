@@ -92,7 +92,7 @@ function App() {
             ></Route>
             <Route
               path="/movie/:id"
-              element={<MoviePage movie={movie} />}
+              element={<MoviePage movie={movie} setMovie={setMovie} />}
             ></Route>
             <Route path="/add-movies" element={<AddMovie />}></Route>
             <Route
