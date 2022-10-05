@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 const Login = ({ user, setUser }) => {
-  const usernames = ["iCy", "Abdullah"];
+  const usernames = ["iCy"];
   const passwords = ["movietrade"];
 
   //   useEffect(() => {
@@ -16,7 +16,7 @@ const Login = ({ user, setUser }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const loginSuccess = () => {
-      window.localStorage.setItem("user", user.username);
+      window.sessionStorage.setItem("user", user.username);
       navigate("/");
     };
     usernames.includes(user.username) && passwords.includes(user.password)

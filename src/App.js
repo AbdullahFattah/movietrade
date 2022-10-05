@@ -10,11 +10,17 @@ import PurchaseComplete from "./components/purchase-complete";
 import Recharge from "./components/recharge";
 import MoviePage from "./components/MoviePage";
 import AddMovie from "./components/AddMovie";
+import Login from "./components/Login";
 
 function App() {
   const [movie, setMovie] = useState([]);
   const [balance, setBalance] = useState(0);
   const [ownedMovies, setOwnedMovies] = useState([]);
+  // Login
+  const [user, setUser] = useState({
+    username: "",
+    password: "",
+  });
 
   useEffect(() => {
     // Balance session storage
@@ -40,7 +46,11 @@ function App() {
         <Router>
           <Navbar balance={balance} />
           <Routes>
-            <Route path="/" element={<Home />}></Route>
+            <Route path="/" element={<Home user={user} />}></Route>
+            <Route
+              path="/login"
+              element={<Login user={user} setUser={setUser} />}
+            ></Route>
             <Route
               path="/me"
               element={
