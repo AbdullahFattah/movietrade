@@ -75,7 +75,9 @@ function MovieRow({ movie, ownedMovies }) {
             <h5 className="card-title">{movie.title}</h5>
 
             <p>{movie.year}</p>
-            <p className="card-text">{movie.description.substr(0, 200)}</p>
+            <p className="card-text">
+              {movie.description ? movie.description.substr(0, 200) : ""}
+            </p>
             <p className="card-text">
               {movie.price}EGP (${Math.floor(movie.price / 19)})
             </p>

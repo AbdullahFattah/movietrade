@@ -15,19 +15,23 @@ const Modify = ({ movie, setMovie, selectedMovie, setSelectedMovie }) => {
   return (
     <div className="container">
       <h1 className="text-center">Modify existing movies</h1>
-      {movie.map((movie) => {
-        return (
-          <Link
-            to={`/modify/${movie.id}`}
-            onClick={() => {
-              setSelectedMovie(movie);
-            }}
-            key={movie.id}
-          >
-            {movie.title}
-          </Link>
-        );
-      })}
+      <ul style={{ listStyle: "none" }}>
+        {movie.map((movie) => {
+          return (
+            <li align="center" key={movie.id}>
+              <Link
+                to={`/modify/${movie.id}`}
+                onClick={() => {
+                  setSelectedMovie(movie);
+                }}
+                key={movie.id}
+              >
+                {movie.title}
+              </Link>
+            </li>
+          );
+        })}
+      </ul>
     </div>
   );
 };

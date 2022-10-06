@@ -28,6 +28,12 @@ const ModifyPage = ({ movie, setMovie }) => {
     setMovie({ ...movie, [e.target.name]: e.target.value });
     // console.log(movie);
   };
+  //   Year dropdown
+  const year = new Date().getFullYear();
+  const years = [];
+  for (let i = year; i > 1800; i--) {
+    years.push(i);
+  }
   return (
     <div className="container">
       <h1 align="center">Modify Movie</h1>
@@ -41,7 +47,7 @@ const ModifyPage = ({ movie, setMovie }) => {
             type="text"
             name="title"
             onChange={(e) => handleChange(e)}
-            value={selectedMovie.title}
+            value={selectedMovie ? selectedMovie.title : ""}
             className="form-control"
             required
             placeholder="What is the movie called?"
@@ -53,7 +59,7 @@ const ModifyPage = ({ movie, setMovie }) => {
             type="text"
             name="description"
             onChange={(e) => handleChange(e)}
-            value={selectedMovie.description}
+            value={selectedMovie ? selectedMovie.description : ""}
             className="form-control"
             placeholder="Movie description..."
             required
@@ -62,25 +68,26 @@ const ModifyPage = ({ movie, setMovie }) => {
         <div className="form-group">
           <label className="m-2">Year</label>
 
-          {/* <select
-          className="form-select"
-          name="year"
-          onChange={(e) => handleChange(e)}
-        >
-          {years.map((year) => {
-            return (
-              <option value={year} key={year}>
-                {year}
-              </option>
-            );
-          })}
-        </select> */}
-          <input
+          <select
+            className="form-select"
+            name="year"
+            onChange={(e) => handleChange(e)}
+            value={selectedMovie ? selectedMovie.year : ""}
+          >
+            {years.map((year) => {
+              return (
+                <option value={year} key={year}>
+                  {year}
+                </option>
+              );
+            })}
+          </select>
+          {/* <input
             type="number"
             name="year"
             onChange={(e) => handleChange(e)}
-            value={selectedMovie.year}
-          ></input>
+            value={selectedMovie ? selectedMovie.year : ""}
+          ></input> */}
         </div>
         <div className="form-group">
           <label className="m-2">Price</label>
@@ -89,7 +96,7 @@ const ModifyPage = ({ movie, setMovie }) => {
             name="price"
             className="form-control"
             onChange={(e) => handleChange(e)}
-            value={selectedMovie.price}
+            value={selectedMovie ? selectedMovie.price : ""}
             min={1}
             placeholder="How much does it cost?"
             required

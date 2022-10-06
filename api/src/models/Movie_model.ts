@@ -6,8 +6,13 @@ export default class MovieModel {
     try {
       const conn = await Client.connect()
       const sql =
-        'INSERT INTO movies(title, description, price) VALUES ($1,$2,$3) RETURNING *'
-      const result = await conn.query(sql, [m.title, m.description, m.price])
+        'INSERT INTO movies(title, description, price, year) VALUES ($1,$2,$3,$4) RETURNING *'
+      const result = await conn.query(sql, [
+        m.title,
+        m.description,
+        m.price,
+        m.year,
+      ])
       conn.release()
       return result.rows[0]
     } catch (err) {
@@ -27,7 +32,7 @@ export default class MovieModel {
     }
   }
 
-  async getMovie(id: string) {
+  async getMovie(id: string): Promise<Movie> {
     try {
       const conn = await Client.connect()
       const sql = 'SELECT * FROM movies WHERE id=($1)'
@@ -39,7 +44,7 @@ export default class MovieModel {
     }
   }
 
-  async deleteMovie(id: string) {
+  async deleteMovie(id: string): Promise<Movie> {
     try {
       const conn = await Client.connect()
       const sql = 'DELETE FROM movies WHERE id=($1) RETURNING *'
@@ -48,6 +53,25 @@ export default class MovieModel {
       return result.rows[0]
     } catch (err) {
       throw new Error(`Unable to delete movie: ${err}`)
+    }
+  }
+
+  async updateMovie(m: Movie): Promise<Movie> {
+    try {
+      const conn = await Client.connect()
+      const sql =
+        'UPDATE movies SET title=$1, description=$2, price=$3, year=$4 WHERE id=$5 RETURNING *'
+      const result = await conn.query(sql, [
+        m.title,
+        m.description,
+        m.price,
+        m.year,
+        m.id,
+      ])
+      conn.release()
+      return result.rows[0]
+    } catch (err) {
+      throw new Error(`Unable to update movie: ${err}`)
     }
   }
 }

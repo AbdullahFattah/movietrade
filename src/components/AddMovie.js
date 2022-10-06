@@ -56,7 +56,7 @@ const AddMovie = () => {
       <div className="form-group">
         <label className="m-2">Year</label>
 
-        {/* <select
+        <select
           className="form-select"
           name="year"
           onChange={(e) => handleChange(e)}
@@ -68,12 +68,12 @@ const AddMovie = () => {
               </option>
             );
           })}
-        </select> */}
-        <input
+        </select>
+        {/* <input
           type="number"
           name="year"
           onChange={(e) => handleChange(e)}
-        ></input>
+        ></input> */}
       </div>
       <div className="form-group">
         <label className="m-2">Price</label>

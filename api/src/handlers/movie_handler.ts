@@ -54,3 +54,16 @@ export const remove = async (
     throw new Error(`Unable to delete movie: ${err}`)
   }
 }
+
+export const update = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const update = await store.updateMovie(req.body)
+    res.json(update)
+  } catch (err) {
+    throw new Error(`Unable to update movie: ${err}`)
+  }
+}

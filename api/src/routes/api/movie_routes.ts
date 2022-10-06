@@ -7,5 +7,6 @@ routes.post('/', handlers.create)
 routes.get('/', handlers.index)
 routes.get('/:id', handlers.get)
 routes.delete('/:id', handlers.remove)
+routes.patch('/:id', handlers.update)
 
 export default routes
