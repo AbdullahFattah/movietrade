@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 const ModifyPage = ({ movie, setMovie }) => {
   const [modifiedMovie, setModifiedMovie] = useState({
@@ -15,17 +15,22 @@ const ModifyPage = ({ movie, setMovie }) => {
     const result = await axios.get("http://localhost:4000/movies");
     setMovie(result.data);
   };
+  const navigate = useNavigate();
   const movieId = parseInt(useParams().id);
   const selectedMovie = movie[movieId - 1];
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Done");
-    // await axios
-    //   .post("http://localhost:4000/movies", movie)
-    //   .then((data) => console.log(data));
+    // If all inputs have no empty values go ahead with the request.
+    await axios
+      .patch(`http://localhost:4000/movies/${movieId}`, modifiedMovie)
+      .then(navigate("/buy-movies"));
   };
   const handleChange = (e) => {
-    setMovie({ ...movie, [e.target.name]: e.target.value });
+    setModifiedMovie({
+      ...modifiedMovie,
+      [e.target.name]: e.target.value,
+      id: movieId,
+    });
     // console.log(movie);
   };
   //   Year dropdown
@@ -47,7 +52,7 @@ const ModifyPage = ({ movie, setMovie }) => {
             type="text"
             name="title"
             onChange={(e) => handleChange(e)}
-            value={selectedMovie ? selectedMovie.title : ""}
+            defaultValue={selectedMovie ? selectedMovie.title : ""}
             className="form-control"
             required
             placeholder="What is the movie called?"
@@ -59,7 +64,7 @@ const ModifyPage = ({ movie, setMovie }) => {
             type="text"
             name="description"
             onChange={(e) => handleChange(e)}
-            value={selectedMovie ? selectedMovie.description : ""}
+            defaultValue={selectedMovie ? selectedMovie.description : ""}
             className="form-control"
             placeholder="Movie description..."
             required
@@ -72,11 +77,14 @@ const ModifyPage = ({ movie, setMovie }) => {
             className="form-select"
             name="year"
             onChange={(e) => handleChange(e)}
-            value={selectedMovie ? selectedMovie.year : ""}
+            defaultValue={selectedMovie ? selectedMovie.year : ""}
           >
             {years.map((year) => {
               return (
-                <option value={year} key={year}>
+                <option
+                  defaultValue={selectedMovie ? selectedMovie.year : ""}
+                  key={year}
+                >
                   {year}
                 </option>
               );
@@ -84,9 +92,10 @@ const ModifyPage = ({ movie, setMovie }) => {
           </select>
           {/* <input
             type="number"
+            className="form-control"
             name="year"
             onChange={(e) => handleChange(e)}
-            value={selectedMovie ? selectedMovie.year : ""}
+            defaultValue={selectedMovie ? selectedMovie.year : ""}
           ></input> */}
         </div>
         <div className="form-group">
@@ -96,7 +105,7 @@ const ModifyPage = ({ movie, setMovie }) => {
             name="price"
             className="form-control"
             onChange={(e) => handleChange(e)}
-            value={selectedMovie ? selectedMovie.price : ""}
+            defaultValue={selectedMovie ? selectedMovie.price : ""}
             min={1}
             placeholder="How much does it cost?"
             required

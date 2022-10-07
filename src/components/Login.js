@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 const Login = ({ user, setUser }) => {
-  const usernames = ["iCy"];
+  const usernames = ["iCy", "Abdullah"];
   const passwords = ["movietrade"];
 
   //   useEffect(() => {

@@ -3,7 +3,7 @@ import image from "../assets/card-image.jpg";
 import profileImage from "../assets/profile.jpg";
 
 export default function Me({ ownedMovies }) {
-  const loggedUser = window.localStorage.getItem("user");
+  const loggedUser = window.sessionStorage.getItem("user");
   return (
     <div className="container text-center mt-3">
       <div className="my-profile" align="center">

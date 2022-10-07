@@ -27,19 +27,23 @@ const MoviePage = ({ movie, setMovie }) => {
           marginTop: "50px",
         }}
       >
-        <h1>{selectedMovie ? selectedMovie.title : "Movie title"}</h1>
-        <p>{selectedMovie ? selectedMovie.year : "Year of Making"}</p>
-        <p>
-          {selectedMovie
-            ? selectedMovie.description
-            : "Description of the movie"}
-        </p>
+        <h1>{selectedMovie ? selectedMovie.title : ""}</h1>
+        <p>{selectedMovie ? selectedMovie.year : ""}</p>
+        <p>{selectedMovie ? selectedMovie.description : ""}</p>
         <Link
           to={`/purchase/${movieId}`}
           style={{ width: "100%" }}
           className="btn btn-success"
         >
           Buy
+        </Link>
+        <hr></hr>
+        <Link
+          to={`/modify/${movieId}`}
+          style={{ width: "100%" }}
+          className="btn btn-warning"
+        >
+          Modify
         </Link>
       </div>
     </div>
