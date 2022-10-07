@@ -1,14 +1,14 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-export default function Home({ user }) {
-  const navigate = useNavigate();
+export default function Home({ user, authenticateLoggedIn }) {
+  // const navigate = useNavigate();
   const loggedUser = window.sessionStorage.getItem("user");
-
-  useEffect(() => {
-    if (!loggedUser) {
-      navigate("/login");
-    }
-  }, []);
+  authenticateLoggedIn();
+  // useEffect(() => {
+  //   if (!loggedUser) {
+  //     navigate("/login");
+  //   }
+  // }, []);
 
   return (
     <>

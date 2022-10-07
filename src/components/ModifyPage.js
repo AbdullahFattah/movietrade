@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-const ModifyPage = ({ movie, setMovie }) => {
+const ModifyPage = ({ movie, setMovie, authenticateLoggedIn }) => {
   const [modifiedMovie, setModifiedMovie] = useState({
     title: "",
     description: "",
@@ -39,6 +39,7 @@ const ModifyPage = ({ movie, setMovie }) => {
   for (let i = year; i > 1800; i--) {
     years.push(i);
   }
+  authenticateLoggedIn();
   return (
     <div className="container">
       <h1 align="center">Modify Movie</h1>

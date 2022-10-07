@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
-const AddMovie = () => {
+const AddMovie = ({ authenticateLoggedIn }) => {
   const [movie, setMovie] = useState({
     title: "",
     description: "",
@@ -28,7 +28,7 @@ const AddMovie = () => {
   for (let i = year; i > 1800; i--) {
     years.push(i);
   }
-
+  authenticateLoggedIn();
   return (
     <form className="container col-md-4 my-5" onSubmit={(e) => handleSubmit(e)}>
       <div className="form-group">

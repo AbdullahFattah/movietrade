@@ -1,7 +1,13 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-const Modify = ({ movie, setMovie, selectedMovie, setSelectedMovie }) => {
+const Modify = ({
+  movie,
+  setMovie,
+  selectedMovie,
+  setSelectedMovie,
+  authenticateLoggedIn,
+}) => {
   useEffect(() => {
     loadMovies();
   }, []);
@@ -12,6 +18,7 @@ const Modify = ({ movie, setMovie, selectedMovie, setSelectedMovie }) => {
     const result = await axios.get("http://localhost:4000/movies");
     setMovie(result.data);
   };
+  authenticateLoggedIn();
   return (
     <div className="container">
       <h1 className="text-center">Modify existing movies</h1>

@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-export default function PurchaseComplete() {
+export default function PurchaseComplete({ authenticateLoggedIn }) {
+  authenticateLoggedIn();
   return (
     <>
       <div className="container text-center my-5">

@@ -1,4 +1,5 @@
-const Recharge = ({ balance, setBalance }) => {
+const Recharge = ({ balance, setBalance, authenticateLoggedIn }) => {
+  authenticateLoggedIn();
   return (
     <div className="container">
       <p className="text-center mt-3">Add credit </p>

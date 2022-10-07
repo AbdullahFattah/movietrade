@@ -2,7 +2,12 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import image from "../assets/card-image.jpg";
-export default function Buy({ movie, setMovie, ownedMovies }) {
+export default function Buy({
+  movie,
+  setMovie,
+  ownedMovies,
+  authenticateLoggedIn,
+}) {
   useEffect(() => {
     loadMovies();
   }, []);
@@ -11,7 +16,7 @@ export default function Buy({ movie, setMovie, ownedMovies }) {
     const result = await axios.get("http://localhost:4000/movies");
     setMovie(result.data);
   };
-
+  authenticateLoggedIn();
   return (
     <>
       <h3 className="text-center mt-3 my-2">Buy movies & TV Shows</h3>

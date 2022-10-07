@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Home from "./components/home";
 import About from "./components/about";
 import Navbar from "./components/navbar";
@@ -25,6 +26,17 @@ function App() {
     password: "",
   });
 
+  const AuthenticateLoggedIn = () => {
+    const navigate = useNavigate();
+    const loggedUser = window.sessionStorage.getItem("user");
+
+    useEffect(() => {
+      if (!loggedUser) {
+        navigate("/login");
+      }
+    });
+  };
+
   useEffect(() => {
     // Balance session storage
     const balance = JSON.parse(window.sessionStorage.getItem("balance"));
@@ -49,7 +61,12 @@ function App() {
         <Router>
           <Navbar balance={balance} />
           <Routes>
-            <Route path="/" element={<Home user={user} />}></Route>
+            <Route
+              path="/"
+              element={
+                <Home authenticateLoggedIn={AuthenticateLoggedIn} user={user} />
+              }
+            ></Route>
             <Route
               path="/login"
               element={<Login user={user} setUser={setUser} />}
@@ -57,28 +74,44 @@ function App() {
             <Route
               path="/me"
               element={
-                <Me ownedMovies={ownedMovies} setOwnedMovies={setOwnedMovies} />
+                <Me
+                  authenticateLoggedIn={AuthenticateLoggedIn}
+                  ownedMovies={ownedMovies}
+                  setOwnedMovies={setOwnedMovies}
+                />
               }
             ></Route>
             <Route
               path="/buy-movies"
               element={
                 <Buy
+                  authenticateLoggedIn={AuthenticateLoggedIn}
                   movie={movie}
                   setMovie={setMovie}
                   ownedMovies={ownedMovies}
                 />
               }
             ></Route>
-            <Route path="/about" element={<About />}></Route>
+            <Route
+              authenticateLoggedIn={AuthenticateLoggedIn}
+              path="/about"
+              element={<About />}
+            ></Route>
             <Route
               path="/recharge"
-              element={<Recharge balance={balance} setBalance={setBalance} />}
+              element={
+                <Recharge
+                  authenticateLoggedIn={AuthenticateLoggedIn}
+                  balance={balance}
+                  setBalance={setBalance}
+                />
+              }
             ></Route>
             <Route
               path="/purchase/:id"
               element={
                 <Purchase
+                  authenticateLoggedIn={AuthenticateLoggedIn}
                   balance={balance}
                   setBalance={setBalance}
                   ownedMovies={ownedMovies}
@@ -88,20 +121,43 @@ function App() {
             ></Route>
             <Route
               path="/purchase-complete"
-              element={<PurchaseComplete />}
+              element={
+                <PurchaseComplete authenticateLoggedIn={AuthenticateLoggedIn} />
+              }
             ></Route>
             <Route
               path="/movie/:id"
-              element={<MoviePage movie={movie} setMovie={setMovie} />}
+              element={
+                <MoviePage
+                  authenticateLoggedIn={AuthenticateLoggedIn}
+                  movie={movie}
+                  setMovie={setMovie}
+                />
+              }
             ></Route>
-            <Route path="/add-movies" element={<AddMovie />}></Route>
+            <Route
+              path="/add-movies"
+              element={<AddMovie authenticateLoggedIn={AuthenticateLoggedIn} />}
+            ></Route>
             <Route
               path="/modify"
-              element={<Modify movie={movie} setMovie={setMovie} />}
+              element={
+                <Modify
+                  authenticateLoggedIn={AuthenticateLoggedIn}
+                  movie={movie}
+                  setMovie={setMovie}
+                />
+              }
             ></Route>
             <Route
               path="/modify/:id"
-              element={<ModifyPage movie={movie} setMovie={setMovie} />}
+              element={
+                <ModifyPage
+                  authenticateLoggedIn={AuthenticateLoggedIn}
+                  movie={movie}
+                  setMovie={setMovie}
+                />
+              }
             ></Route>
           </Routes>
         </Router>

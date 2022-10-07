@@ -1,7 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
-function Purchase({ balance, setBalance, ownedMovies, setOwnedMovies }) {
+function Purchase({
+  balance,
+  setBalance,
+  ownedMovies,
+  setOwnedMovies,
+  authenticateLoggedIn,
+}) {
   const [fetchedMovies, setFetchedMovies] = useState([]);
   const [balanceError, setBalanceError] = useState("");
   useEffect(() => {
@@ -24,6 +30,7 @@ function Purchase({ balance, setBalance, ownedMovies, setOwnedMovies }) {
       : null;
   const selectedMovie = fetchedMovies.find((m) => m.id === movieId);
 
+  authenticateLoggedIn();
   return (
     <>
       <div className="container text-center my-5">

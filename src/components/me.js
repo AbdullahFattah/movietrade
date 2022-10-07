@@ -2,8 +2,9 @@ import React from "react";
 import image from "../assets/card-image.jpg";
 import profileImage from "../assets/profile.jpg";
 
-export default function Me({ ownedMovies }) {
+export default function Me({ ownedMovies, authenticateLoggedIn }) {
   const loggedUser = window.sessionStorage.getItem("user");
+  authenticateLoggedIn();
   return (
     <div className="container text-center mt-3">
       <div className="my-profile" align="center">
