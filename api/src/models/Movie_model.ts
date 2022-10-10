@@ -74,4 +74,13 @@ export default class MovieModel {
       throw new Error(`Unable to update movie: ${err}`)
     }
   }
+
+  async fixIds() {
+    const conn = await Client.connect()
+    const sql1 = 'ALTER SEQUENCE movies_id_seq RESTART'
+    const sql2 = 'update movies SET id = DEFAULT'
+    const result = await conn.query(sql1).then(conn.query(sql2))
+    conn.release()
+    return result.rows
+  }
 }

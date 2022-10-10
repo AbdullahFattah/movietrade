@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 const AddMovie = ({ authenticateLoggedIn }) => {
@@ -9,12 +9,14 @@ const AddMovie = ({ authenticateLoggedIn }) => {
     price: "",
     // type: "",
   });
-
+  const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await axios
-      .post("http://localhost:4000/movies", movie)
-      .then((data) => console.log(data));
+    await axios.post("http://localhost:4000/movies", movie).then(
+      setTimeout(() => {
+        navigate("/buy-movies");
+      }, 10)
+    );
   };
 
   const handleChange = (e) => {

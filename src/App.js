@@ -93,9 +93,8 @@ function App() {
               }
             ></Route>
             <Route
-              authenticateLoggedIn={AuthenticateLoggedIn}
               path="/about"
-              element={<About />}
+              element={<About authenticateLoggedIn={AuthenticateLoggedIn} />}
             ></Route>
             <Route
               path="/recharge"
