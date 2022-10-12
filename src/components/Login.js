@@ -19,13 +19,18 @@ const Login = ({ user, setUser }) => {
       window.sessionStorage.setItem("user", user.username);
       navigate("/");
     };
+
+    const timedError = ()=>{
+        setError(
+       <p style={{ color: "orange" }}>Unable to log in! Make sure you have the correct username and password</p>
+         );
+      setTimeout(()=>{setError(<i>Try "user" for username and "movietrade" for password.</i>)},7000)
+    }
     
     usernames.includes(user.username) && passwords.includes(user.password)
       ? loginSuccess()
-      : setError(
-      <p style={{ color: "orange" }}>Unable to log in! Make sure you have the correct username and password</p>
-          
-        );
+      : timedError()
+     
   };
 
   return (
