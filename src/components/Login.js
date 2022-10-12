@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 const Login = ({ user, setUser }) => {
-  const usernames = ["iCy", "Abdullah"];
+  const usernames = ["iCy", "Abdullah","user"];
   const passwords = ["movietrade"];
 
   //   useEffect(() => {
   //     window.sessionStorage.setItem("user", user.username);
   //   }, [user]);
 
-  const [error, setError] = useState("");
+  const [error, setError] = useState(<i>Try "user" for username and "movietrade" for password.</i>);
   const navigate = useNavigate();
   const handleChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
@@ -19,10 +19,12 @@ const Login = ({ user, setUser }) => {
       window.sessionStorage.setItem("user", user.username);
       navigate("/");
     };
+    
     usernames.includes(user.username) && passwords.includes(user.password)
       ? loginSuccess()
       : setError(
-          "Unable to log in! Make sure you have the correct username and password"
+      <p style={{ color: "orange" }}>Unable to log in! Make sure you have the correct username and password</p>
+          
         );
   };
 
@@ -64,7 +66,7 @@ const Login = ({ user, setUser }) => {
         >
           Login
         </button>
-        <p style={{ color: "orange" }}>{error}</p>
+        {error}
       </form>
     </>
   );
